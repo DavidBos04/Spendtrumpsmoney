@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend Donald Trump's Money</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #container {
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #balance {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 20%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .item img {
+            height: 100px; /* Adjust this value to change the height */
+            width: auto;
+            margin-right: 20px;
+        }
+        .item div {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Spend Donald Trump's Money</h1>
+        <p>Donald Trump's estimated net worth: $7,200,000,000</p>
+        
+        <div class="item">
+            <div>
+                <img src="images/hamburger.jpg" alt="Hamburger">
+                <span>Hamburger ($5)</span>
+            </div>
+            <button onclick="buyItem(5, 'hamburger')">Buy Hamburger</button>
+            <button onclick="sellItem(5, 'hamburger')">Sell Hamburger</button>
+            <span id="hamburgerCount">0</span> bought
+        </div>
+        <div class="item">
+            <div>
+                <img src="images/car.jpg" alt="Luxury Car">
+                <span>Luxury Car ($100,000)</span>
+            </div>
+            <button onclick="buyItem(100000, 'car')">Buy Luxury Car</button>
+            <button onclick="sellItem(100000, 'car')">Sell Luxury Car</button>
+            <span id="carCount">0</span> bought
+        </div>
+        <div class="item">
+            <div>
+                <img src="images/jet.jpg" alt="Private Jet">
+                <span>Private Jet ($50,000,000)</span>
+            </div>
+            <button onclick="buyItem(50000000, 'jet')">Buy Private Jet</button>
+            <button onclick="sellItem(50000000, 'jet')">Sell Private Jet</button>
+            <span id="jetCount">0</span> bought
+        </div>
+        
+        <p id="balance">Remaining balance: $7,200,000,000</p>
+    </div>
+
+    <script>
+        let balance = 7200000000;
+        let items = {
+            hamburger: 0,
+            car: 0,
+            jet: 0
+        };
+
+        function buyItem(amount, item) {
+            if (amount > balance) {
+                alert('Not enough money to buy that item');
+                return;
+            }
+
+            balance -= amount;
+            items[item]++;
+            updateUI();
+        }
+
+        function sellItem(amount, item) {
+            if (items[item] > 0) {
+                balance += amount;
+                items[item]--;
+                updateUI();
+            } else {
+                alert(`You don't have any ${item}s to sell`);
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('balance').textContent = `Remaining balance: $${balance.toLocaleString()}`;
+            document.getElementById('hamburgerCount').textContent = items.hamburger;
+            document.getElementById('carCount').textContent = items.car;
+            document.getElementById('jetCount').textContent = items.jet;
+        }
+    </script>
+</body>
+</html>
