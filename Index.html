@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend Donald Trump's Money</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 70px;
+        }
+        #progress-container {
+            width: 100%;
+            background-color: #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-radius: 0;
+        }
+        #progress-bar {
+            background-color: #4caf50;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+            transition: width 0.3s;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #progress-text {
+            position: relative;
+            z-index: 1;
+            margin-top: 7px;
+            color: #1c7d39;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .item {
+            display: inline-block;
+            margin: 10px;
+            width: 30%; /* Adjust width as needed */
+            vertical-align: top;
+        }
+        .item img {
+            width: 100%; /* Make images fill the container */
+            height: 800px; /* Set a fixed height for consistency */
+            object-fit: cover; /* Ensure images maintain aspect ratio */
+            border-radius: 10px;
+        }
+        .item .info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .item button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: calc(50% - 10px); /* Adjust width and margin as needed */
+            margin-top: 10px;
+        }
+        .item .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        #receipt {
+            margin-top: 30px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spend Donald Trump's Money</h1>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+        <div id="progress-text">Remaining Money: $7,200,000,000.00</div>
+    </div>
+    <div class="item">
+        <img src="c:\Users\David\Downloads\Yacht.jpg" alt="Yacht">
+        <div class="info">
+            <p>Yacht</p>
+            <p>$1,000,000</p>
+            <p>Quantity: <span id="yacht">0</span></p>
+            <p>A luxurious yacht perfect for cruising the seven seas and avoiding taxes. Comes with a built-in helipad for those quick getaways.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('yacht', 1000000)">Buy</button>
+            <button onclick="sell('yacht', 1000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="c:\Users\David\Downloads\Car.jpg" alt="Luxury Car">
+        <div class="info">
+            <p>Luxury Car</p>
+            <p>$500,000</p>
+            <p>Quantity: <span id="car">0</span></p>
+            <p>A high-end luxury car that screams, "I'm rich!" Perfect for impressing your friends and running over democracy.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('car', 500000)">Buy</button>
+            <button onclick="sell('car', 500000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="c:\Users\David\Downloads\toiletgold.jpg" alt="Solid Gold Toilet">
+        <div class="info">
+            <p>Solid Gold Toilet</p>
+            <p>$10,000,000</p>
+            <p>Quantity: <span id="solid_gold_toilet">0</span></p>
+            <p>The ultimate symbol of opulence and excess. This solid gold toilet is perfect for when you need to take a dump on democracy.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('solid_gold_toilet', 10000000)">Buy</button>
+            <button onclick="sell('solid_gold_toilet', 10000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="island.jpg" alt="Private Island">
+        <div class="info">
+            <p>Private Island</p>
+            <p>$100,000,000</p>
+            <p>Quantity: <span id="island">0</span></p>
+            <p>Own your very own private island. Perfect for hosting exclusive parties and hiding from your tax returns.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('island', 100000000)">Buy</button>
+            <button onclick="sell('island', 100000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="diamond-golf-club.jpg" alt="Diamond-Encrusted Golf Club">
+        <div class="info">
+            <p>Diamond-Encrusted Golf Club</p>
+            <p>$5,000,000</p>
+            <p>Quantity: <span id="diamond_golf_club">0</span></p>
+            <p>Play golf in style with this diamond-encrusted golf club. Guaranteed to improve your swing and make your opponents green with envy. Comes with a free lifetime membership to Mar-a-Lago.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('diamond_golf_club', 5000000)">Buy</button>
+            <button onclick="sell('diamond_golf_club', 5000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="golden_statue.jpg" alt="Golden Statue of Yourself">
+        <div class="info">
+            <p>Golden Statue of Yourself</p>
+            <p>$3,000,000</p>
+            <p>Quantity: <span id="golden_statue">0</span></p>
+            <p>Nothing says narcissism like a golden statue of yourself. Perfect for your garden or foyer, and sure to impress (or terrify) visitors.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('golden_statue', 3000000)">Buy</button>
+            <button onclick="sell('golden_statue', 3000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="private_jet.jpg" alt="Private Jet">
+        <div class="info">
+            <p>Private Jet</p>
+            <p>$50,000,000</p>
+            <p>Quantity: <span id="private_jet">0</span></p>
+            <p>Fly high in your very own private jet. No more TSA lines, just pure luxury and sky-high tweets.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('private_jet', 50000000)">Buy</button>
+            <button onclick="sell('private_jet', 50000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="mansion.jpg" alt="Luxury Mansion">
+        <div class="info">
+            <p>Luxury Mansion</p>
+            <p>$200,000,000</p>
+            <p>Quantity: <span id="mansion">0</span></p>
+            <p>Live like a king in a sprawling mansion with more rooms than you can count. Each comes with its own gold-plated bathroom.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('mansion', 200000000)">Buy</button>
+            <button onclick="sell('mansion', 200000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="racehorse.jpg" alt="Racehorse">
+        <div class="info">
+            <p>Racehorse</p>
+            <p>$2,000,000</p>
+            <p>Quantity: <span id="racehorse">0</span></p>
+            <p>Own a champion racehorse and feel the thrill of victory on the track. Comes with a stable and a personal jockey.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('racehorse', 2000000)">Buy</button>
+            <button onclick="sell('racehorse', 2000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="giant_robot.jpg" alt="Giant Fighting Robot">
+        <div class="info">
+            <p>Giant Fighting Robot</p>
+            <p>$150,000,000</p>
+            <p>Quantity: <span id="giant_robot">0</span></p>
+            <p>Fulfill your childhood dreams and own a giant fighting robot. Perfect for defending your private island and intimidating your enemies.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('giant_robot', 150000000)">Buy</button>
+            <button onclick="sell('giant_robot', 150000000)">Sell</button>
+        </div>
+    </div>
+    <div class="item">
+        <img src="moon_trip.jpg" alt="Trip to the Moon">
+        <div class="info">
+            <p>Trip to the Moon</p>
+            <p>$500,000,000</p>
+            <p>Quantity: <span id="moon_trip">0</span></p>
+            <p>Travel to the moon in style. Experience zero gravity and unparalleled views of Earth. Optional: Name a crater after yourself.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="buy('moon_trip', 500000000)">Buy</button>
+            <button onclick="sell('moon_trip', 500000000)">Sell</button>
+        </div>
+    </div>
+    <div id="receipt">
+        <h2>Receipt</h2>
+        <ul id="receipt-list"></ul>
+    </div>
+    <script>
+        const totalMoney = 7200000000;
+        let remainingMoney = totalMoney;
+        const prices = {
+            yacht: 1000000,
+            car: 500000,
+            solid_gold_toilet: 10000000,
+            island: 100000000,
+            diamond_golf_club: 5000000,
+            golden_statue: 3000000,
+            private_jet: 50000000,
+            mansion: 200000000,
+            racehorse: 2000000,
+            giant_robot: 150000000,
+            moon_trip: 500000000
+        };
+        const quantities = {
+            yacht: 0,
+            car: 0,
+            solid_gold_toilet: 0,
+            island: 0,
+            diamond_golf_club: 0,
+            golden_statue: 0,
+            private_jet: 0,
+            mansion: 0,
+            racehorse: 0,
+            giant_robot: 0,
+            moon_trip: 0
+        };
+        const receipt = {};
+
+        function updateUI() {
+            for (const item in quantities) {
+                document.getElementById(item).innerText = quantities[item];
+            }
+            document.getElementById('progress-bar').style.width = (remainingMoney / totalMoney * 100) + '%';
+            document.getElementById('progress-text').innerText = 'Remaining Money: $' + remainingMoney.toLocaleString();
+            updateReceipt();
+        }
+
+        function buy(item, price) {
+            if (remainingMoney >= price) {
+                quantities[item]++;
+                remainingMoney -= price;
+                if (receipt[item]) {
+                    receipt[item].quantity++;
+                    receipt[item].totalPrice += price;
+                } else {
+                    receipt[item] = {
+                        name: item.replace(/_/g, ' '),
+                        quantity: 1,
+                        totalPrice: price
+                    };
+                }
+                updateUI();
+            }
+        }
+
+        function sell(item, price) {
+            if (quantities[item] > 0) {
+                quantities[item]--;
+                remainingMoney += price;
+                if (receipt[item]) {
+                    receipt[item].quantity--;
+                    receipt[item].totalPrice -= price;
+                    if (receipt[item].quantity === 0) {
+                        delete receipt[item];
+                    }
+                }
+                updateUI();
+            }
+        }
+
+        function updateReceipt() {
+            const receiptList = document.getElementById('receipt-list');
+            receiptList.innerHTML = '';
+            let totalSpent = 0;
+            for (const item in receipt) {
+                const listItem = document.createElement('li');
+                listItem.innerText = `${receipt[item].name} x${receipt[item].quantity} - $${receipt[item].totalPrice.toLocaleString()}`;
+                receiptList.appendChild(listItem);
+                totalSpent += receipt[item].totalPrice;
+            }
+            const totalSpentItem = document.createElement('li');
+            totalSpentItem.innerText = `Total Spent: $${totalSpent.toLocaleString()}`;
+            receiptList.appendChild(totalSpentItem);
+        }
+
+        window.onload = updateUI;
+    </script>
+</body>
+</html>
